@@ -1,0 +1,403 @@
+{% extends "empmngt/navbar.html" %}
+{% load static %}
+
+{% block nav_block %}
+<section class='container-fluid'>
+<div class="employee-profile-page">
+
+    <!-- Header -->
+    <header class="profile-page-header">
+        <div>
+            <span class="profile-eyebrow">
+                STAFFHUB / EMPLOYEE DIRECTORY
+            </span>
+            <h1>Employee Profile</h1>
+            <p>View employee details, employment information and documents.</p>
+        </div>
+
+        <a href="/viewemp/" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Back to Employees
+        </a>
+    </header>
+
+    <!-- Employee Summary -->
+    <section class="profile-hero">
+
+        <div class="profile-avatar">
+            {% if d.Profile_Photo %}
+                <img src="{{ d.Profile_Photo.url }}"
+                     alt="{{ d.Name }} profile photo">
+            {% else %}
+                <div class="profile-avatar-initial">
+                    {{ d.Name|first|upper }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="profile-hero-content">
+            <span class="profile-hero-label">EMPLOYEE DETAILS</span>
+
+            <h2>{{ d.Name }}</h2>
+            <span class="profile-id">
+                <i class="bi bi-person-fill"></i>
+                {{ d.Emp_ID }}
+            </span>
+            <p>
+                {{ d.Designation }}
+                {% if d.Department %} · {{ d.Department }}{% endif %}
+            </p>
+
+
+        </div>
+
+        <div class="profile-hero-actions">
+            <a href="/empupdate/{{ d.id }}/"
+               class="profile-edit-btn">
+                <i class="bi bi-pencil-square"></i>
+                Edit Profile
+            </a>
+        </div>
+
+    </section>
+
+    <div class="profile-content-grid px-5">
+
+        <!-- Main Column -->
+        <main class="profile-main-column">
+
+            <!-- Personal Information -->
+            <section class="profile-card">
+
+                <div class="profile-card-heading d-flex justify-content-between">
+                    <div class='d-flex gap-2'>
+                        <div class="profile-heading-icon">
+                            <i class="bi bi-person-lines-fill"></i>
+                        </div>
+                        <div>
+                            <h3>Personal Information</h3>
+                            <p>Identity and contact information</p>
+                        </div>
+                    </div>
+                    <div class="me-2">
+                        <span class="profile-info-label">Employee ID</span>
+                        <span class="profile-id">
+                            <i class="bi bi-file-person-fill"></i>
+                            {{ d.Emp_ID }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="profile-info-grid">
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Full Name</span>
+                        <div class="profile-info-value">{{ d.Name }}</div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Email Address</span>
+                        <div class="profile-info-value">
+                            {% if d.Email %}
+                                <a href="mailto:{{ d.Email }}">{{ d.Email }}</a>
+                            {% else %}
+                                <span class="profile-muted">Not provided</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Phone Number</span>
+                        <div class="profile-info-value">
+                            {% if d.Phone %}
+                                {{ d.Phone }}
+                            {% else %}
+                                <span class="profile-muted">Not provided</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Date of Birth</span>
+                        <div class="profile-info-value">
+                            {% if d.Date_of_Birth %}
+                                {{ d.Date_of_Birth|date:"d M Y" }}
+                            {% else %}
+                                <span class="profile-muted">Not provided</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item full-width">
+                        <span class="profile-info-label">Address</span>
+                        <div class="profile-info-value">
+                            {{ d.Address|default_if_none:""|default:"Not provided" }}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">City</span>
+                        <div class="profile-info-value">
+                            {{ d.City|default_if_none:""|default:"Not provided" }}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">State</span>
+                        <div class="profile-info-value">
+                            {{ d.State|default_if_none:""|default:"Not provided" }}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Employment Information -->
+            <section class="profile-card">
+
+                <div class="profile-card-heading">
+                    <div class="profile-heading-icon">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+                    <div>
+                        <h3>Employment Information</h3>
+                        <p>Role, department and compensation</p>
+                    </div>
+                </div>
+
+                <div class="profile-info-grid">
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Designation</span>
+                        <div class="profile-info-value">{{ d.Designation }}</div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Department</span>
+                        <div class="profile-info-value">{{ d.Department }}</div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Date of Joining</span>
+                        <div class="profile-info-value">
+                            {{ d.Date_of_Joining|date:"d M Y" }}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Employment Type</span>
+                        <div class="profile-info-value">
+                            {{ d.Employment_Type|default:"Not specified" }}
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Experience</span>
+                        <div class="profile-info-value">
+                            {{ d.Experience }} years
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Annual CTC</span>
+                        <div class="profile-info-value">
+                            {{ d.Annual_CTC|floatformat:2 }} LPA
+                        </div>
+                    </div>
+
+                    <div class="profile-info-item full-width">
+                        <span class="profile-info-label">Reporting Manager</span>
+                        <div class="profile-info-value">
+                            {{ d.Reporting_Manager|default:"Not assigned" }}
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="profile-card">
+
+                <div class="profile-card-heading">
+                    <div class="profile-heading-icon">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+                    <div>
+                        <h3>Skills & Professional Profile</h3>
+                        <p>Technical skills and professional links</p>
+                    </div>
+                </div>
+
+                <div class="profile-info-grid">
+
+                    <div class="profile-info-item full-width">
+                        <span class="profile-info-label">Technical Skills</span>
+                        {% if skills_list %}
+                            <div class="profile-skills">
+                                {% for skill in skills_list %}
+                                    <span class="profile-skill">{{ skill }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <span class="profile-muted">No skills added</span>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="profile-info-item full-width">
+                        <span class="profile-info-label">LinkedIn Profile</span>
+                        <div class="profile-info-value">
+                            {% if d.LinkedIn %}
+                                <a href="{{ d.LinkedIn }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    View LinkedIn Profile
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            {% else %}
+                                <span class="profile-muted">Not provided</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="profile-side-column">
+
+            <!-- Profile Photo -->
+            <section class="profile-card">
+
+                <div class="profile-card-heading">
+                    <div class="profile-heading-icon">
+                        <i class="bi bi-camera"></i>
+                    </div>
+                    <div>
+                        <h3>Profile Photo</h3>
+                        <p>Employee photograph</p>
+                    </div>
+                </div>
+
+                {% if d.Profile_Photo %}
+                    <div style="text-align: center;">
+                        <img src="{{ d.Profile_Photo.url }}"
+                             alt="{{ d.Name }} profile photo"
+                             style="width: 100%; max-height: 320px;
+                                    object-fit: contain; border-radius: 12px;">
+
+                        <a href="{{ d.Profile_Photo.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="document-btn"
+                           style="margin-top: 14px;">
+                            <i class="bi bi-eye"></i>
+                            View Full Photo
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="profile-empty-document">
+                        <i class="bi bi-person-circle"
+                           style="font-size: 28px; display: block; margin-bottom: 8px;"></i>
+                        No profile photo uploaded.
+                    </div>
+                {% endif %}
+
+            </section>
+
+            <!-- Resume -->
+            <section class="profile-card">
+
+                <div class="profile-card-heading">
+                    <div class="profile-heading-icon">
+                        <i class="bi bi-file-earmark-person"></i>
+                    </div>
+                    <div>
+                        <h3>Resume & Documents</h3>
+                        <p>Employee resume</p>
+                    </div>
+                </div>
+
+                {% if d.Resume %}
+                    <div class="profile-document">
+
+                        <div class="profile-document-icon pdf-icon">
+                            <i class="bi bi-file-earmark-pdf"></i>
+                        </div>
+
+                        <div class="profile-document-info">
+                            <strong>Employee Resume</strong>
+                            <small>Uploaded document</small>
+                        </div>
+
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <a href="{{ d.Resume.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="document-btn">
+                            <i class="bi bi-eye"></i>
+                            View Resume
+                        </a>
+
+                        <a href="{{ d.Resume.url }}"
+                           download
+                           class="document-btn">
+                            <i class="bi bi-download"></i>
+                            Download
+                        </a>
+                    </div>
+
+                {% else %}
+                    <div class="profile-empty-document">
+                        <i class="bi bi-file-earmark-x"
+                           style="font-size: 28px; display: block; margin-bottom: 8px;"></i>
+                        No resume uploaded.
+                    </div>
+                {% endif %}
+
+            </section>
+
+            <!-- Quick Details -->
+            <section class="profile-card">
+
+                <div class="profile-card-heading">
+                    <div class="profile-heading-icon">
+                        <i class="bi bi-card-checklist"></i>
+                    </div>
+                    <div>
+                        <h3>Profile Summary</h3>
+                        <p>Employment at a glance</p>
+                    </div>
+                </div>
+
+                <div class="profile-info-grid">
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Employee ID</span>
+                        <div class="profile-info-value">{{ d.Emp_ID }}</div>
+                    </div>
+
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Department</span>
+                        <div class="profile-info-value">{{ d.Department }}</div>
+                    </div>
+
+                    <div class="profile-info-item full-width">
+                        <span class="profile-info-label">Annual CTC</span>
+                        <div class="profile-info-value">
+                            {{ d.Annual_CTC|floatformat:2 }} LPA
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </aside>
+    </div>
+
+</div>
+</section>
+{% endblock %}

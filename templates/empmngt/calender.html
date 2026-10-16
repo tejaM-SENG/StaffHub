@@ -1,0 +1,196 @@
+{% extends "empmngt/navbar.html" %}
+
+{% block nav_block %}
+
+
+
+
+
+<section class="calendar-page">
+
+    <!-- Header -->
+
+    <div class="calendar-header">
+
+        <div>
+            <span class="calendar-eyebrow">
+                COMPANY SCHEDULE
+            </span>
+
+            <h1>Company Calendar</h1>
+
+            <p>
+                Add important company dates, holidays, events,
+                and schedules to keep your employees informed.
+            </p>
+        </div>
+
+        <a href="/hrmanager" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            HR Portal
+        </a>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="calendar-layout">
+
+        <!-- Editor -->
+
+        <div class="calendar-card">
+
+            <div class="calendar-card-header">
+
+                <div>
+                    <span>NEW CALENDAR ENTRY</span>
+                    <h2>Calendar Details</h2>
+                </div>
+
+                <div class="calendar-icon">
+                    <i class="bi bi-calendar3"></i>
+                </div>
+
+            </div>
+
+            <div class='calendar-form'>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {% for i in form %}
+
+                    <div class="calendar-field">
+
+                        <label for="{{ i.id_for_label }}">
+                            {{ i.label }}
+                        </label>
+
+                        {{ i }}
+
+                        {% if i.help_text %}
+                            <div class="form-text">
+                                {{ i.help_text }}
+                            </div>
+                        {% endif %}
+
+                        {% if i.errors %}
+                            {{ i.errors }}
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+                </div>
+
+
+                <div class="calendar-divider"></div>
+
+
+                <div class="calendar-actions">
+
+                    <a href="/hrmanager" class="cancel-btn">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="save-btn">
+                        <i class="bi bi-calendar-plus"></i>
+                        Add Calendar Entry
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Sidebar -->
+
+        <aside class="calendar-sidebar">
+
+            <div class="sidebar-heading">
+
+                <span>CALENDAR GUIDE</span>
+
+                <h3>Keep everyone informed.</h3>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <span class="guide-number">01</span>
+
+                <div>
+                    <strong>Add important dates</strong>
+
+                    <p>
+                        Record company events, holidays,
+                        meetings, and other important dates.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <span class="guide-number">02</span>
+
+                <div>
+                    <strong>Use clear information</strong>
+
+                    <p>
+                        Add a meaningful title and enough
+                        information for employees to understand the event.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <span class="guide-number">03</span>
+
+                <div>
+                    <strong>Keep the calendar updated</strong>
+
+                    <p>
+                        Update or remove outdated entries
+                        whenever company schedules change.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="calendar-note">
+
+                <i class="bi bi-calendar-check"></i>
+
+                <div>
+
+                    <strong>HR Calendar</strong>
+
+                    <span>
+                        This entry will be added to the
+                        company calendar for employee reference.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+{% endblock %}
+

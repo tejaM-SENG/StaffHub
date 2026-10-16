@@ -1,0 +1,188 @@
+{% extends 'empmngt/navbar.html' %}
+{% load static %}
+{% block nav_block %}
+
+<section class="login-section">
+    <div class="container">
+        <div class="login-wrapper">
+
+            <!-- =========================================
+                 LOGIN FORM
+            ========================================== -->
+
+            <div class="login-content">
+
+                <div class="login-heading">
+
+                    <div class="login-icon">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                    </div>
+
+                    <span class="login-label">
+                        STAFFHUB
+                    </span>
+
+                    <h1>
+                        Welcome back.
+                    </h1>
+
+                    <p>
+                        Sign in to access your employee
+                        management dashboard.
+                    </p>
+
+                </div>
+
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+
+                    <!-- USERNAME -->
+
+                    <div class="login-field">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person"></i>
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Enter your username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="login-field">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+
+                        Sign In
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <div class="login-footer text-center">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    Secure employee management access
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 RIGHT VISUAL
+            ========================================== -->
+
+            <div class="login-visual">
+
+                <img
+                    src="{% static 'images/home.jpg' %}"
+                    alt="Employee Management"
+                >
+
+                <div class="login-overlay"></div>
+
+
+                <div class="visual-content">
+
+                    <span>
+                        EMPLOYEE MANAGEMENT SYSTEM
+                    </span>
+
+                    <h2>
+                        One place for
+                        your workforce.
+                    </h2>
+
+                    <p>
+                        Manage employee records, HR information
+                        and workforce data through a simple,
+                        organized platform.
+                    </p>
+
+                </div>
+
+
+                <!-- Floating dashboard card -->
+
+                <div class="login-card">
+
+                    <div class="login-card-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <small>
+                            WORKFORCE
+                        </small>
+
+                        <strong>
+                            Employee Records
+                        </strong>
+
+                    </div>
+
+                    <i class="bi bi-arrow-up-right ms-auto"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+

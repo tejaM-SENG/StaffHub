@@ -1,0 +1,186 @@
+{% extends 'empmngt/navbar.html' %}
+
+{% block nav_block %}
+<section class="employee-dashboard">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <div class="dashboard-header">
+
+        <div class="header-content">
+
+            <span class="dashboard-label">
+                Employee Portal
+            </span>
+
+            <h1>Welcome to StaffHub</h1>
+
+            <p>
+                Access company information, stay updated with announcements,
+                view upcoming holidays, and explore current job opportunities.
+            </p>
+
+        </div>
+
+
+        <a href="/home" class="dashboard-home">
+            <i class="bi bi-house"></i>
+            Home
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         RESOURCES
+    ========================= -->
+
+    <div class="resource-heading">
+
+        <span>Employee Resources</span>
+
+        <h2>What would you like to view?</h2>
+
+    </div>
+
+
+    <div class="resource-grid">
+
+
+        <!-- Holidays -->
+
+        <a href="/holidays" class="resource-card">
+
+            <span class="resource-number">
+                01
+            </span>
+
+            <div class="resource-icon">
+                <i class="bi bi-calendar-event"></i>
+            </div>
+
+            <h3 class='text-white'>Calendar Holidays</h3>
+
+            <p>
+                View company holidays, important occasions,
+                and upcoming dates throughout the year.
+            </p>
+
+            <div class="resource-open">
+                View Calendar
+                <i class="bi bi-arrow-up-right"></i>
+            </div>
+
+        </a>
+
+
+
+        <!-- News -->
+
+        <a href="/news" class="resource-card">
+
+            <span class="resource-number">
+                02
+            </span>
+
+            <div class="resource-icon">
+                <i class="bi bi-megaphone"></i>
+            </div>
+
+            <h3 class='text-white'>Latest News</h3>
+
+            <p>
+                Read the latest company announcements,
+                updates, and important employee information.
+            </p>
+
+            <div class="resource-open">
+                Read News
+                <i class="bi bi-arrow-up-right"></i>
+            </div>
+
+        </a>
+
+
+
+        <!-- Jobs -->
+
+        <a href="/jobs" class="resource-card">
+
+            <span class="resource-number">
+                03
+            </span>
+
+            <div class="resource-icon">
+                <i class="bi bi-briefcase"></i>
+            </div>
+
+            <h3 class='text-white'>Current Job Openings</h3>
+
+            <p>
+                Explore current job opportunities and
+                available positions within the organization.
+            </p>
+
+            <div class="resource-open">
+                View Jobs
+                <i class="bi bi-arrow-up-right"></i>
+            </div>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         INFORMATION BAR
+    ========================= -->
+
+    <div class="employee-info">
+
+        <div class="info-item">
+
+            <i class="bi bi-calendar-check"></i>
+
+            <div>
+                <strong>Company Calendar</strong>
+                <span>Plan ahead with important dates</span>
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <i class="bi bi-bell"></i>
+
+            <div>
+                <strong>Company Updates</strong>
+                <span>Stay informed with the latest news</span>
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <i class="bi bi-person-workspace"></i>
+
+            <div>
+                <strong>Career Opportunities</strong>
+                <span>Explore available positions</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+{% endblock %}

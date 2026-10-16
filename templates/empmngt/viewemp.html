@@ -1,0 +1,199 @@
+{% extends "empmngt/navbar.html" %}
+{% load static %}
+
+{% block nav_block %}
+
+<section class="employee-page">
+
+<!-- Page Header -->
+<div class="employee-header">
+
+    <div>
+        <span class="employee-eyebrow">WORKFORCE</span>
+        <h1>Employee Directory</h1>
+        <p>
+            View, update and manage employee information from one place.
+        </p>
+    </div>
+
+    <div class="employee-header-actions">
+        <a href="/addemp" class="employee-add-btn">
+            <i class="bi bi-person-plus"></i>
+            Add Employee
+        </a>
+    </div>
+
+</div>
+
+<!-- Employee Table -->
+<div class="employee-table-wrapper m-3">
+
+    <div class="employee-table-top">
+
+        <div>
+            <span class="table-label">EMPLOYEE RECORDS</span>
+            <h2>All Employees</h2>
+        </div>
+
+        <div class="record-count">
+            <i class="bi bi-people"></i>
+            <span>{{ d|length }} Records</span>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+        <table class="employee-table">
+
+            <thead>
+                <tr>
+                    <th>EMPLOYEE</th>
+                    <th>EMP ID</th>
+                    <th>JOINED</th>
+                    <th>DESIGNATION</th>
+                    <th>DEPARTMENT</th>
+                    <th>ANNUAL CTC</th>
+                    <th>EXPERIENCE</th>
+                    <th class="text-center">ACTION</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for i in d %}
+
+                <tr>
+
+                    <td>
+                        <div class="employee-name">
+
+                            <div class="employee-avatar">
+                                {{ i.Name|first|upper }}
+                            </div>
+
+                            <div>
+                                <strong>{{ i.Name }}</strong>
+                                <span>Employee</span>
+                            </div>
+
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="employee-id">
+                            {{ i.Emp_ID }}
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="joining-date">
+                            {{ i.Date_of_Joining }}
+                        </span>
+                    </td>
+
+                    <td>
+                        {{ i.Designation }}
+                    </td>
+
+                    <td>
+                        <span class="department">
+                            {{ i.Department }}
+                        </span>
+                    </td>
+
+                    <td>
+                        <strong>{{ i.Annual_CTC }} LPA</strong>
+                    </td>
+
+                    <td>
+                        {{ i.Experience }} Years
+                    </td>
+
+                    <td class='text-center ps-0'>
+
+                        <div class="employee-actions">
+
+                            <a href="/employee/{{ i.id }}/"
+                               class="btn btn-outline-dark">
+                                <i class="bi bi-eye"></i> View
+                            </a>
+
+                            <a href="/empupdate/{{ i.id }}/"
+                               class="btn btn-outline-warning">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+
+                            <a href="/empdelete/{{ i.id }}/"
+                               class="btn btn-outline-danger"
+                               onclick="return confirm('Are you sure to Delete this Employee Info?');">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="8">
+
+                        <div class="empty-employees">
+
+                            <div class="empty-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+
+                            <h3>No employees found</h3>
+
+                            <p>
+                                There are currently no employee records in the system.
+                            </p>
+
+                            <a href="/addemp" class="employee-add-btn">
+                                <i class="bi bi-person-plus"></i>
+                                Add First Employee
+                            </a>
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- Bottom Navigation -->
+
+<div class="employee-footer m-5">
+
+    <a href="/download" class="download-btn">
+        <i class="bi bi-download"></i>
+        Download Data
+    </a>
+
+    <a href="/hrmanager" class="back-btn">
+        <i class="bi bi-arrow-left"></i>
+        Back to HR Manager
+    </a>
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

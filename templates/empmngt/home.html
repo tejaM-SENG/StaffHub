@@ -1,0 +1,795 @@
+{% extends "empmngt/navbar.html" %}
+{% load static %}
+{% block nav_block %}
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="hero-main">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <!-- HERO CONTENT -->
+            <div class="col-lg-6">
+                <div class="hero-badge">
+                    <i class="bi bi-shield-check"></i>
+                    EMPLOYEE MANAGEMENT SYSTEM
+                </div>
+
+                <h1 class="hero-title">
+
+                    Manage people.
+                    <br>
+
+                    <span>Build better teams.</span>
+
+                </h1>
+
+                <p class="hero-description">
+
+                    A simple and organized platform for managing
+                    employee information, HR records and workforce
+                    operations — all from one place.
+
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="/hrmanager"
+                       class="btn btn-primary hero-btn">
+
+                        <i class="bi bi-person-workspace me-2"></i>
+
+                        Open HR Manager
+
+                        <i class="bi bi-arrow-up-right ms-2"></i>
+
+                    </a>
+
+                    <a href="/empdash"
+                       class="hero-secondary">
+
+                        Explore Employees
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+                <div class="hero-meta">
+
+                    <div>
+
+                        <i class="bi bi-check2"></i>
+
+                        Employee Records
+
+                    </div>
+
+                    <div>
+
+                        <i class="bi bi-check2"></i>
+
+                        HR Management
+
+                    </div>
+
+                    <div>
+
+                        <i class="bi bi-check2"></i>
+
+                        Django Application
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- HERO VISUAL -->
+
+            <div class="col-lg-6">
+
+                <div class="hero-dashboard">
+
+                    <!-- Dashboard Header -->
+
+                    <div class="dashboard-header">
+
+                        <div class="dashboard-title">
+
+                            <div class="mini-logo">
+
+                                <i class="bi bi-grid-fill"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Workforce
+                                </strong>
+
+                                <small>
+                                    Management Dashboard
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <i class="bi bi-three-dots"></i>
+
+                    </div>
+
+                    <!-- Dashboard Cards -->
+
+                    <div class="dashboard-cards">
+
+                        <div class="dashboard-card">
+
+                            <div class="dashboard-card-icon">
+
+                                <i class="bi bi-people-fill"></i>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    EMPLOYEES
+                                </small>
+
+                                <strong>
+                                    Manage
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        <div class="dashboard-card">
+
+                            <div class="dashboard-card-icon">
+
+                                <i class="bi bi-building"></i>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    DEPARTMENTS
+                                </small>
+
+                                <strong>
+                                    Organize
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Employee Image -->
+
+                    <div class="dashboard-photo">
+
+                        <img src="{% static 'images/home.jpg' %}"
+                             alt="Employee Management">
+
+                        <div class="photo-overlay">
+
+                            <span>
+
+                                <i class="bi bi-circle-fill"></i>
+
+                                System Active
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Dashboard Bottom -->
+
+                    <div class="dashboard-bottom">
+
+                        <div>
+
+                            <small>
+                                EMPLOYEE DATA
+                            </small>
+
+                            <strong>
+                                Centralized & Organized
+                            </strong>
+
+                        </div>
+
+                        <div class="dashboard-arrow">
+
+                            <i class="bi bi-arrow-up-right"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================================================
+     INTRO STRIP
+===================================================== -->
+
+<section class="intro-strip">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-4">
+
+                <span class="eyebrow">
+                    WHY STAFFHUB
+                </span>
+
+                <h2>
+                    Less complexity.
+                    <br>
+                    Better organization.
+                </h2>
+
+            </div>
+
+            <div class="col-lg-8">
+
+                <p>
+
+                    Employee information shouldn't be scattered
+                    across files and spreadsheets. This application
+                    provides a centralized environment where HR
+                    managers can maintain employee records and
+                    access workforce information efficiently.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     PRODUCT / CAPABILITIES SECTION
+===================================================== -->
+
+<section class="product-section">
+
+    <div class="container">
+
+        <!-- SECTION HEADING -->
+
+        <div class="product-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    CORE CAPABILITIES
+                </span>
+
+                <h2>
+                    Everything starts with
+                    <span>organized data.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Essential tools for managing employee information,
+                HR operations and workforce records in one place.
+            </p>
+
+        </div>
+
+        <!-- CAPABILITY LIST -->
+
+        <div class="product-list">
+
+            <!-- ITEM 01 -->
+
+            <a href="/empdash" class="product-item">
+
+                <div class="product-number">
+                    01
+                </div>
+
+                <div class="product-icon">
+                    <i class="bi bi-person-vcard"></i>
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        Employee Management
+                    </h3>
+
+                    <p>
+                        Maintain employee profiles including employee ID,
+                        designation, department, joining date, experience
+                        and compensation details.
+                    </p>
+
+                </div>
+
+                <div class="product-arrow">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+            <!-- ITEM 02 -->
+
+            <a href="/hrmanager" class="product-item">
+
+                <div class="product-number">
+                    02
+                </div>
+
+                <div class="product-icon">
+                    <i class="bi bi-person-gear"></i>
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        HR Operations
+                    </h3>
+
+                    <p>
+                        Access a dedicated management area for handling
+                        employee records and everyday HR administration.
+                    </p>
+
+                </div>
+
+                <div class="product-arrow">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+            <!-- ITEM 03 -->
+
+            <a href="/empdash" class="product-item">
+
+                <div class="product-number">
+                    03
+                </div>
+
+                <div class="product-icon">
+                    <i class="bi bi-database"></i>
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        Structured Data
+                    </h3>
+
+                    <p>
+                        Store and retrieve employee information dynamically
+                        through Django models and a relational database.
+                    </p>
+
+                </div>
+
+                <div class="product-arrow">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+            <!-- ITEM 04 -->
+
+            <a href="/home" class="product-item">
+
+                <div class="product-number">
+                    04
+                </div>
+
+                <div class="product-icon">
+                    <i class="bi bi-phone"></i>
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        Responsive Interface
+                    </h3>
+
+                    <p>
+                        A responsive interface designed to provide a
+                        consistent experience across desktop, tablet
+                        and mobile devices.
+                    </p>
+
+                </div>
+
+                <div class="product-arrow">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+            <!-- ITEM 05 -->
+
+            <a href="/hrmanager" class="product-item">
+
+                <div class="product-number">
+                    05
+                </div>
+
+                <div class="product-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        CRUD Operations
+                    </h3>
+
+                    <p>
+                        Add, view, update and remove employee records
+                        through the HR management interface.
+                    </p>
+
+                </div>
+
+                <div class="product-arrow">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WORKFLOW
+===================================================== -->
+
+<section class="workflow-section">
+
+    <div class="container">
+
+
+        <div class="workflow-heading">
+
+            <span class="eyebrow">
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                A simple workflow for
+                <span>HR teams.</span>
+            </h2>
+
+        </div>
+
+
+
+        <div class="workflow">
+
+
+            <div class="workflow-item">
+
+                <div class="workflow-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Access
+                    </h3>
+
+                    <p>
+                        Enter the HR management area
+                        to access employee records.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="workflow-line"></div>
+
+
+
+            <div class="workflow-item">
+
+                <div class="workflow-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manage
+                    </h3>
+
+                    <p>
+                        Add new employees or update
+                        existing workforce information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="workflow-line"></div>
+
+
+
+            <div class="workflow-item">
+
+                <div class="workflow-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Organize
+                    </h3>
+
+                    <p>
+                        Keep employee information structured
+                        and easy to access.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="workflow-line"></div>
+
+
+
+            <div class="workflow-item">
+
+                <div class="workflow-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Review
+                    </h3>
+
+                    <p>
+                        View workforce information through
+                        the employee dashboard.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TECHNOLOGY
+===================================================== -->
+
+<section class="stack-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="col-lg-5">
+
+                <span class="eyebrow">
+                    TECHNOLOGY STACK
+                </span>
+
+                <h2>
+                    Built with tools
+                    <span>made for the web.</span>
+                </h2>
+
+                <p class="stack-description">
+                    A modern web application built with a Python
+                    backend, Django framework, relational database
+                    and responsive frontend technologies.
+                </p>
+
+                <div class="stack-note">
+                    <i class="bi bi-code-square"></i>
+
+                    <span>
+                        Designed for simplicity, maintainability
+                        and a responsive user experience.
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- TECHNOLOGY LIST -->
+
+            <div class="col-lg-7">
+
+                <div class="stack-list">
+
+                    <div class="stack-item">
+
+                        <div class="stack-icon">
+                            <i class="bi bi-filetype-py"></i>
+                        </div>
+
+                        <div class="stack-info">
+                            <strong>Python</strong>
+                            <small>Programming Language</small>
+                        </div>
+
+                        <span class="stack-number">01</span>
+
+                    </div>
+
+
+                    <div class="stack-item">
+
+                        <div class="stack-icon">
+                            <i class="bi bi-box"></i>
+                        </div>
+
+                        <div class="stack-info">
+                            <strong>Django</strong>
+                            <small>Web Framework</small>
+                        </div>
+
+                        <span class="stack-number">02</span>
+
+                    </div>
+
+
+                    <div class="stack-item">
+
+                        <div class="stack-icon">
+                            <i class="bi bi-database"></i>
+                        </div>
+
+                        <div class="stack-info">
+                            <strong>SQLite</strong>
+                            <small>Relational Database</small>
+                        </div>
+
+                        <span class="stack-number">03</span>
+
+                    </div>
+
+
+                    <div class="stack-item">
+
+                        <div class="stack-icon">
+                            <i class="bi bi-bootstrap"></i>
+                        </div>
+
+                        <div class="stack-info">
+                            <strong>Bootstrap</strong>
+                            <small>UI Framework</small>
+                        </div>
+
+                        <span class="stack-number">04</span>
+
+                    </div>
+
+
+                    <div class="stack-item">
+
+                        <div class="stack-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                        <div class="stack-info">
+                            <strong>HTML & CSS</strong>
+                            <small>Frontend Interface</small>
+                        </div>
+
+                        <span class="stack-number">05</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="final-section">
+
+    <div class="container">
+
+        <div class="final-box">
+
+            <div class="final-content">
+
+                <span>
+                    EMPLOYEE MANAGEMENT SYSTEM
+                </span>
+
+                <h2>
+                    Ready to manage your
+                    employee records?
+                </h2>
+
+                <p>
+                    Access the HR management dashboard and
+                    keep your workforce information organized.
+                </p>
+
+            </div>
+
+
+            <a href="/hrmanager"
+               class="final-button">
+
+                <span>Open HR Manager</span>
+
+                <i class="bi bi-arrow-up-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{%endblock%}
+

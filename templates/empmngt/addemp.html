@@ -1,0 +1,495 @@
+{% extends "empmngt/navbar.html" %}
+{% block nav_block %}
+
+<section class="employee-form-page">
+
+    <!-- Page Header -->
+    <header class="form-page-header">
+        <div>
+            <span class="form-eyebrow">STAFFHUB / EMPLOYEE MANAGEMENT</span>
+            <h1>Add New Employee</h1>
+            <p>
+                Create an employee profile, record employment details and
+                upload the documents needed for your workforce directory.
+            </p>
+        </div>
+
+        <a href="/viewemp/" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Employee Directory
+        </a>
+    </header>
+
+    <form method="POST" action="{% url 'add_employee' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="employee-form-errors">
+                <i class="bi bi-exclamation-circle"></i>
+                <div>{{ form.non_field_errors }}</div>
+            </div>
+        {% endif %}
+
+        {% if form.errors %}
+            <div class="employee-form-errors">
+                <h4>Please correct the following errors:</h4>
+
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>
+                            <strong>{{ field.label }}:</strong>
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+                {% endfor %}
+
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-layout">
+
+            <!-- Main Form -->
+            <main class="form-main">
+                <div class="form-card">
+
+                    <div class="form-card-header">
+                        <div>
+                            <span>NEW EMPLOYEE ONBOARDING</span>
+                            <h2>Create Employee Profile</h2>
+                            <p>Fields marked with * are required.</p>
+                        </div>
+
+                        <div class="form-icon">
+                            <i class="bi bi-person-vcard"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-content px-4">
+
+                        <div class="form-divider"></div>
+
+                        <!-- Personal Information -->
+                        <section class="form-section">
+                            <div class="form-section-heading">
+                                <div class="section-icon">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                </div>
+                                <div>
+                                    <h3>Personal Information</h3>
+                                    <p>Enter the employee's identity and contact details.</p>
+                                </div>
+                            </div>
+
+                            <div class="employee-fields">
+                                {% for field in form %}
+                                    {% if field.name == "Name" or field.name == "Email" or field.name == "Phone" or field.name == "Date_of_Birth" or field.name == "Address" or field.name == "City" or field.name == "State" %}
+
+                                        <div class="employee-field {% if field.name == 'Address' %}field-full{% endif %}">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                {% if field.field.required %}
+                                                    <span class="required-mark">*</span>
+                                                {% endif %}
+                                            </label>
+
+
+                                            {{ field }}
+
+                                            {% if field.errors %}
+                                                <div class="field-error">
+                                                    {% for error in field.errors %}
+                                                        <span>
+                                                            <i class="bi bi-exclamation-circle"></i>
+                                                            {{ error }}
+                                                        </span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+
+                                        </div>
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+
+                        <div class="form-divider"></div>
+                        <div class='d-flex gap-3 my-5'>
+                            <!-- Profile Photo -->
+                            <section class="form-section w-50">
+                                <div class="form-section-heading">
+                                    <div class="section-icon">
+                                        <i class="bi bi-camera"></i>
+                                    </div>
+                                    <div>
+                                        <h3>Profile Photo</h3>
+                                        <p>Add a professional photo to identify the employee.</p>
+                                    </div>
+                                </div>
+
+                                <div class="profile-upload-area">
+                                    <div class="profile-preview" id="profilePreview">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+
+                                    <div class="profile-upload-details">
+                                        <label for="{{ form.Profile_Photo.id_for_label }}">
+                                            Profile Photo
+                                        </label>
+
+                                        {{ form.Profile_Photo }}
+
+                                        <label for="{{ form.Profile_Photo.id_for_label }}"
+                                            class="photo-picker-btn">
+                                            <i class="bi bi-camera"></i>
+                                            Choose Photo
+                                        </label>
+
+                                        {% if form.Profile_Photo.errors %}
+                                            <div class="field-error">
+                                                {% for error in form.Profile_Photo.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+
+                                        <small>Choose a JPG, JPEG or PNG image.</small>
+
+                                        <p id="selectedPhotoName" class="selected-file-name">
+                                            No photo selected
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="form-section w-50">
+                                <div class="form-section-heading">
+                                    <div class="section-icon">
+                                        <i class="bi bi-file-earmark-person"></i>
+                                    </div>
+                                    <div>
+                                        <h3>Upload Resume</h3>
+                                        <p>Attach the employee's resume to their record.</p>
+                                    </div>
+                                </div>
+
+                                <div class="resume-upload-area">
+                                    <div class="resume-upload-icon">
+                                        <i class="bi bi-file-earmark-pdf"></i>
+                                    </div>
+
+                                    <div class="resume-upload-content">
+                                        <label for="{{ form.Resume.id_for_label }}">
+                                            Employee Resume (PDF)
+                                            {% if form.Resume.field.required %}
+                                                <span class="required-mark">*</span>
+                                            {% endif %}
+                                        </label>
+
+                                        {{ form.Resume }}
+
+                                        <label for="{{ form.Resume.id_for_label }}"
+                                            class="file-picker-btn">
+                                            <i class="bi bi-upload"></i>
+                                            Choose PDF
+                                        </label>
+
+                                        {% if form.Resume.errors %}
+                                            <div class="field-error">
+                                                {% for error in form.Resume.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+
+                                        <small>PDF files only.</small>
+
+                                        <p id="selectedResumeName" class="selected-file-name">
+                                            No resume selected
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="form-divider"></div>
+                        <!-- Employment Information -->
+                        <section class="form-section">
+                            <div class="form-section-heading">
+                                <div class="section-icon">
+                                    <i class="bi bi-briefcase"></i>
+                                </div>
+                                <div>
+                                    <h3>Employment Information</h3>
+                                    <p>Define the employee's role and employment details.</p>
+                                </div>
+                            </div>
+
+                            <div class="employee-fields">
+                                {% for field in form %}
+                                    {% if field.name == "Designation" or field.name == "Department" or field.name == "Date_of_Joining" or field.name == "Employment_Type" or field.name == "Reporting_Manager" or field.name == "Experience" or field.name == "Annual_CTC" %}
+
+                                        <div class="employee-field">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                {% if field.field.required %}
+                                                    <span class="required-mark">*</span>
+                                                {% endif %}
+                                            </label>
+
+                                            {% if field.name == "Annual_CTC" %}
+                                                <div class="input-suffix-group">
+                                                    
+                                                    {{ field }}
+
+                                                    <span class="input-suffix">LPA</span>
+                                                </div>
+                                            {% elif field.name == "Experience" %}
+                                                <div class="input-suffix-group">
+                                                    
+                                                    {{ field }}
+                                                    <span class="input-suffix">Years</span>
+                                                </div>
+                                            {% else %}
+                                                
+                                            {{ field }}
+
+                                            {% if field.errors %}
+                                                <div class="field-error">
+                                                    {% for error in field.errors %}
+                                                        <span>
+                                                            <i class="bi bi-exclamation-circle"></i>
+                                                            {{ error }}
+                                                        </span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+
+                                            {% endif %}
+
+                                            {% if field.help_text %}
+                                                <small>{{ field.help_text }}</small>
+                                            {% endif %}
+                                        </div>
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+
+                        <div class="form-divider"></div>
+
+                        <!-- Skills and Professional Profile -->
+                        <section class="form-section mb-4">
+                            <div class="form-section-heading">
+                                <div class="section-icon">
+                                    <i class="bi bi-code-slash"></i>
+                                </div>
+                                <div>
+                                    <h3>Skills & Professional Profile</h3>
+                                    <p>Record technical skills and professional links.</p>
+                                </div>
+                            </div>
+
+                            <div class="employee-fields">
+                                {% for field in form %}
+                                    {% if field.name == "Skills" or field.name == "LinkedIn" %}
+
+                                        <div class="employee-field field-full">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                {% if field.field.required %}
+                                                    <span class="required-mark">*</span>
+                                                {% endif %}
+                                            </label>
+
+                                            {{ field }}
+
+                                            {% if field.help_text %}
+                                                <small>{{ field.help_text }}</small>
+                                            {% endif %}
+
+                                            {% if field.errors %}
+                                                <div class="field-error">
+                                                    {% for error in field.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <a href="/hrmanager/" class="cancel-btn">Cancel</a>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="bi bi-person-check"></i>
+                            Create Employee
+                        </button>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="form-sidebar">
+
+                <div class="sidebar-intro">
+                    <span class="sidebar-eyebrow">ONBOARDING GUIDE</span>
+                    <h3>Build a complete profile.</h3>
+                    <p>
+                        Complete the employee record so HR can maintain
+                        accurate workforce information.
+                    </p>
+                </div>
+
+                <div class="sidebar-block">
+                    <div class="sidebar-number">01</div>
+                    <div>
+                        <h3>Personal details</h3>
+                        <p>Enter the employee's name, unique ID and contact information.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <div class="sidebar-number">02</div>
+                    <div>
+                        <h3>Employment details</h3>
+                        <p>Verify the department, designation, joining date and compensation.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <div class="sidebar-number">03</div>
+                    <div>
+                        <h3>Skills & documents</h3>
+                        <p>Add technical skills and attach the employee's resume.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-note">
+                    <i class="bi bi-shield-check"></i>
+                    <div>
+                        <strong>HR Workspace</strong>
+                        <span>Only authorized HR staff should create and manage employee records.</span>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </form>
+</section>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const photoInput = document.getElementById(
+        "{{ form.Profile_Photo.id_for_label }}"
+    );
+
+    const preview = document.getElementById("profilePreview");
+    const photoName = document.getElementById("selectedPhotoName");
+
+    const resumeInput = document.getElementById(
+        "{{ form.Resume.id_for_label }}"
+    );
+
+    const resumeName = document.getElementById("selectedResumeName");
+
+    // Display filename with a green tick
+    function showSelectedFile(element, filename) {
+        element.replaceChildren();
+
+        const name = document.createElement("span");
+        name.textContent = filename;
+
+        const tick = document.createElement("i");
+        tick.className = "bi bi-check-circle-fill file-success-icon";
+        tick.setAttribute("aria-label", "File selected successfully");
+        tick.setAttribute("title", "File selected successfully");
+
+        element.append(name, tick);
+        element.classList.add("file-selected");
+    }
+
+    // Reset filename display
+    function resetSelectedFile(element, message) {
+        element.textContent = message;
+        element.classList.remove("file-selected");
+    }
+
+    // Profile photo selection
+    if (photoInput && preview && photoName) {
+        photoInput.addEventListener("change", function () {
+
+            const file = this.files && this.files[0];
+
+            if (!file) {
+                resetSelectedFile(photoName, "No photo selected");
+                preview.innerHTML = '<i class="bi bi-person"></i>';
+                return;
+            }
+
+            if (!["image/jpeg", "image/png"].includes(file.type)) {
+                this.value = "";
+                resetSelectedFile(photoName, "No photo selected");
+                preview.innerHTML = '<i class="bi bi-person"></i>';
+                alert("Please select a JPG, JPEG, or PNG image.");
+                return;
+            }
+
+            showSelectedFile(photoName, file.name);
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                preview.replaceChildren();
+
+                const img = document.createElement("img");
+                img.src = event.target.result;
+                img.alt = "Selected employee photo";
+
+                preview.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // Resume PDF selection
+    if (resumeInput && resumeName) {
+        resumeInput.addEventListener("change", function () {
+
+            const file = this.files && this.files[0];
+
+            if (!file) {
+                resetSelectedFile(resumeName, "No resume selected");
+                return;
+            }
+
+            if (!file.name.toLowerCase().endsWith(".pdf")) {
+                this.value = "";
+                resetSelectedFile(resumeName, "No resume selected");
+                alert("Please select a PDF file only.");
+                return;
+            }
+
+            showSelectedFile(resumeName, file.name);
+        });
+    }
+
+});
+</script>
+
+{% endblock %}

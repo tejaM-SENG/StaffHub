@@ -1,0 +1,437 @@
+{% extends "empmngt/navbar.html" %}
+{% block nav_block %}
+
+<div class="employee-update-page">
+
+    <!-- Page Header -->
+    <div class="employee-update-header">
+        <div>
+            <span class="employee-update-eyebrow">EMPLOYEE MANAGEMENT / EDIT PROFILE</span>
+            <h1>Edit Employee Profile</h1>
+            <p>Update employee information, professional details, profile photo and resume.</p>
+        </div>
+
+        <a href="/viewemp/" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Back to Employees
+        </a>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-danger rounded-3 mb-4">
+                <h6 class="fw-bold mb-2">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Please correct the following errors:
+                </h6>
+
+                <ul class="mb-0">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>
+                                <strong>{{ field.label }}:</strong>
+                                {{ error }}
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    <section class="profile-hero">
+
+        <div class="profile-avatar">
+            {% if d.Profile_Photo %}
+                <img src="{{ d.Profile_Photo.url }}"
+                     alt="{{ d.Name }} profile photo">
+            {% else %}
+                <div class="profile-avatar-initial">
+                    {{ d.Name|first|upper }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="profile-hero-content">
+            <span class="profile-hero-label">EMPLOYEE DETAILS</span>
+
+            <h2>{{ d.Name }}</h2>
+            <span class="profile-id">
+                <i class="bi bi-person-fill"></i>
+                {{ d.Emp_ID }}
+            </span>
+            <p>
+                {{ d.Designation }}
+                {% if d.Department %} · {{ d.Department }}{% endif %}
+            </p>
+
+
+        </div>
+
+        <div class="profile-hero-actions">
+            <a class="profile-edit-btn">
+                <i class="bi bi-pencil-square"></i>
+                Editing Profile
+            </a>
+        </div>
+
+    </section>
+        <!-- Profile Summary -->
+        
+
+        <div class="employee-update-layout">
+
+            <!-- Main Form -->
+
+            <div class="employee-update-card">
+
+
+                <!-- Basic Information -->
+                <div class="employee-section-heading">
+                    <div class="employee-section-icon">
+                        <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <div>
+                        <h2>Basic Information</h2>
+                        <p>Maintain the employee's identity and contact details.</p>
+                    </div>
+                </div>
+
+                <div class="employee-update-fields">
+
+                    <div class="employee-field">
+                        <label for="Name">Full Name <span>*</span></label>
+                        <input type="text" id="Name" name="Name"
+                               value="{{ d.Name }}" class="employee-input" required>
+                    </div>
+                    <br>
+                    <div class="employee-field">
+                        <label for="Email">Work Email<span>*</span></label>
+                        <input type="email" id="Email" name="Email"
+                               value="{{ d.Email|default_if_none:'' }}"
+                               class="employee-input" required>
+                    </div>
+
+
+                    <div class="employee-field">
+                        <label for="Phone">Phone Number <span>*</span></label>
+
+                        <input
+                            type="tel" id="Phone" name="Phone"
+                            value="{{ form.Phone.value|default_if_none:'' }}"
+                            class="employee-input {% if form.Phone.errors %}is-invalid{% endif %}"
+                            inputmode="numeric" maxlength="10" required>
+
+                        {% for error in form.Phone.errors %}
+                            <div class="field-error text-danger" role="alert">
+                                <i class="bi bi-exclamation-circle"></i>
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="employee-field">
+                        <label for="Date_of_Birth">Date of Birth</label>
+                        <input type="date" id="Date_of_Birth" name="Date_of_Birth"
+                               value="{{ d.Date_of_Birth|date:'Y-m-d' }}"
+                               class="employee-input">
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="Date_of_Joining">Date of Joining <span>*</span></label>
+                        <input type="date" id="Date_of_Joining" name="Date_of_Joining"
+                               value="{{ d.Date_of_Joining|date:'Y-m-d' }}"
+                               class="employee-input" required>
+                    </div>
+
+                    <div class="employee-field employee-field-full">
+                        <label for="Address">Address</label>
+                        <textarea id="Address" name="Address"
+                                  class="employee-input" rows="3">{{ d.Address|default_if_none:'' }}</textarea>
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="City">City</label>
+                        <input type="text" id="City" name="City"
+                               value="{{ d.City|default_if_none:'' }}"
+                               class="employee-input">
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="State">State</label>
+                        <input type="text" id="State" name="State"
+                               value="{{ d.State|default_if_none:'' }}"
+                               class="employee-input">
+                    </div>
+
+                </div>
+
+                <div class="employee-update-divider"></div>
+
+            <div class='d-flex gap-3'>
+                <div class='w-50'>
+                <!-- Profile Photo -->
+                    <div class="employee-section-heading">
+                        <div class="employee-section-icon">
+                            <i class="bi bi-person-bounding-box"></i>
+                        </div>
+                        <div>
+                            <h2>Profile Photo</h2>
+                            <p>Upload a professional photo for the employee record.</p>
+                        </div>
+                    </div>
+
+                    {% if d.Profile_Photo %}
+                        <div class="employee-current-resume">
+                            <div class="employee-resume-icon">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div class="employee-resume-info">
+                                <strong>Current Profile Photo available</strong>
+                                <a href="{{ d.Profile_Photo.url }}" target="_blank" rel="noopener">
+                                    View current photo
+                                </a>
+                            </div>
+                            <i class="bi bi-check-circle-fill employee-resume-check"></i>
+                        </div>
+                    {% endif %}
+
+                    <div class="employee-photo-upload">
+                        <div class="employee-photo-preview">
+                            {% if d.Profile_Photo %}
+                                <img src="{{ d.Profile_Photo.url }}"
+                                    alt="Current profile photo">
+                            {% else %}
+                                <i class="bi bi-person"></i>
+                            {% endif %}
+                        </div>
+
+                        <div class="employee-upload-content">
+                            <label for="Profile_Photo">Change profile photo</label>
+                            <input type="file"
+                                id="Profile_Photo"
+                                name="Profile_Photo"
+                                accept="image/*"
+                                class="employee-input">
+                            <small>Use a clear JPG, PNG or other supported image.</small>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Resume -->
+                <div class='w-50'>
+                    <div class="employee-section-heading">
+                        <div class="employee-section-icon">
+                            <i class="bi bi-file-earmark-person"></i>
+                        </div>
+                        <div>
+                            <h2>Update Resume</h2>
+                            <p>Upload the employee's latest resume before saving changes.</p>
+                        </div>
+                    </div>
+
+                    {% if d.Resume %}
+                        <div class="employee-current-resume">
+                            <div class="employee-resume-icon">
+                                <i class="bi bi-file-earmark-pdf"></i>
+                            </div>
+                            <div class="employee-resume-info">
+                                <strong>Current resume available</strong>
+                                <a href="{{ d.Resume.url }}" target="_blank" rel="noopener">
+                                    View current resume
+                                </a>
+                            </div>
+                            <i class="bi bi-check-circle-fill employee-resume-check"></i>
+                        </div>
+                    {% endif %}
+
+                    <div class="employee-resume-upload">
+                        <label for="Resume">
+                            Upload Latest Resume 
+                        </label>
+                        <input type="file" id="Resume" name="Resume"
+                            class="employee-input"
+                            accept=".pdf,.doc,.docx">
+                        <small>
+                            {% if d.Resume %}
+                                Choose a replacement resume if you want to update the current document.
+                            {% else %}
+                                No resume is saved. Upload a resume to continue.
+                            {% endif %}
+                            Accepted formats: PDF, DOC, DOCX.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+                <div class="employee-update-divider"></div>
+
+                <!-- Employment Information -->
+                <div class="employee-section-heading">
+                    <div class="employee-section-icon">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+                    <div>
+                        <h2>Employment Information</h2>
+                        <p>Update the employee's role, department and compensation.</p>
+                    </div>
+                </div>
+
+                <div class="employee-update-fields">
+
+                    <div class="employee-field">
+                        <label for="Designation">Designation <span>*</span></label>
+                        <input type="text" id="Designation" name="Designation"
+                               value="{{ d.Designation }}" class="employee-input" required>
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="Department">Department <span>*</span></label>
+                        <input type="text" id="Department" name="Department"
+                               value="{{ d.Department }}" class="employee-input" required>
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="Employment_Type">Employment Type</label>
+                        <select id="Employment_Type" name="Employment_Type"
+                                class="employee-input">
+                            <option value="">Select employment type</option>
+                            <option value="Full-time" {% if d.Employment_Type == "Full-time" %}selected{% endif %}>Full-time</option>
+                            <option value="Part-time" {% if d.Employment_Type == "Part-time" %}selected{% endif %}>Part-time</option>
+                            <option value="Contract" {% if d.Employment_Type == "Contract" %}selected{% endif %}>Contract</option>
+                            <option value="Intern" {% if d.Employment_Type == "Intern" %}selected{% endif %}>Intern</option>
+                        </select>
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="Reporting_Manager">Reporting Manager</label>
+                        <input type="text" id="Reporting_Manager"
+                               name="Reporting_Manager"
+                               value="{{ d.Reporting_Manager|default_if_none:'' }}"
+                               class="employee-input">
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="Experience">Experience <span>*</span></label>
+                        <div class='input-suffix-group'>
+                        <input type="number" id="Experience" name="Experience"
+                               value="{{ d.Experience }}" min="0" step="0.1"
+                               class="employee-input" required><span class="input-suffix">Years</span>
+                        </div>
+                    </div>
+
+                    <div class="employee-field">
+                        <label for="Annual_CTC">Annual CTC <span>*</span></label>
+                        <div class='input-suffix-group'>
+                        <input type="number" id="Annual_CTC" name="Annual_CTC"
+                               value="{{ d.Annual_CTC }}" min="0" step="0.01"
+                               class="employee-input" required><span class="input-suffix">LPA</span>
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="form-divider"></div>
+
+                        <div class="form-section mb-4">
+                            <div class="form-section-heading">
+                                <div class="section-icon">
+                                    <i class="bi bi-code-slash"></i>
+                                </div>
+                                <div>
+                                    <h3>Skills & Professional Profile</h3>
+                                    <p>Record technical skills and professional links.</p>
+                                </div>
+                            </div>
+                    <div class="employee-field employee-field-full">
+                        <label for="Skills">Technical Skills</label>
+                        <textarea id="Skills" name="Skills" rows="3"
+                                  class="employee-input"
+                                  placeholder="Python, Django, SQL, JavaScript...">{{ d.Skills|default_if_none:'' }}</textarea>
+                    </div>
+
+                    <div class="employee-field employee-field-full">
+                        <label for="LinkedIn">LinkedIn Profile</label>
+                        <input type="url" id="LinkedIn" name="LinkedIn"
+                               value="{{ d.LinkedIn|default_if_none:'' }}"
+                               class="employee-input"
+                               placeholder="https://www.linkedin.com/in/...">
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="employee-update-divider"></div>
+
+                <div class="employee-update-actions">
+                    <a href="/viewemp/" class="employee-cancel-btn">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="employee-save-btn">
+                        <i class="bi bi-check2-circle"></i>
+                        Save Employee Profile
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="employee-update-sidebar">
+
+                <div class="employee-sidebar-heading">
+                    <span>PROFILE CHECKLIST</span>
+                    <h3>Keep records complete.</h3>
+                    <p>Review these items before saving the employee profile.</p>
+                </div>
+
+                <div class="employee-guide-item">
+                    <span class="employee-guide-number">01</span>
+                    <div>
+                        <strong>Personal information</strong>
+                        <p>Check the employee name, ID and contact details.</p>
+                    </div>
+                </div>
+
+                <div class="employee-guide-item">
+                    <span class="employee-guide-number">02</span>
+                    <div>
+                        <strong>Work information</strong>
+                        <p>Verify designation, department, experience and CTC.</p>
+                    </div>
+                </div>
+
+                <div class="employee-guide-item">
+                    <span class="employee-guide-number">03</span>
+                    <div>
+                        <strong>Profile photo</strong>
+                        <p>Use a clear, professional photo where available.</p>
+                    </div>
+                </div>
+
+                <div class="employee-guide-item">
+                    <span class="employee-guide-number">04</span>
+                    <div>
+                        <strong>Latest resume</strong>
+                        <p>Upload the required resume before saving.</p>
+                    </div>
+                </div>
+
+                <div class="employee-update-note">
+                    <i class="bi bi-shield-check"></i>
+                    <div>
+                        <strong>HR editing mode</strong>
+                        <span>Changes are saved to the existing employee record.</span>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </form>
+</div>
+
+{% endblock %}

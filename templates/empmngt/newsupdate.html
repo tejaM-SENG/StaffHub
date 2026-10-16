@@ -1,0 +1,172 @@
+{% extends "empmngt/navbar.html" %}
+
+{% block nav_block %}
+
+<section class="news-update-page">
+
+<!-- Header -->
+
+<div class="update-header">
+
+    <div>
+        <span class="update-eyebrow">COMPANY COMMUNICATION</span>
+
+        <h1>Update Latest News</h1>
+
+        <p>
+            Edit the existing company announcement and keep your employees informed.
+        </p>
+    </div>
+
+    <a href="/news/" class="back-link">
+        <i class="bi bi-arrow-left"></i>
+        View News
+    </a>
+
+</div>
+
+
+<!-- Main Content -->
+
+<div class="update-layout">
+
+    <!-- Editor -->
+
+    <div class="update-card">
+
+        <div class="update-card-header">
+
+            <div>
+                <span>EDIT ANNOUNCEMENT</span>
+                <h2>News Details</h2>
+            </div>
+
+            <div class="update-icon">
+                <i class="bi bi-pencil-square"></i>
+            </div>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="editor-area">
+
+                <label for="Details">
+                    Announcement Details
+                </label>
+
+                <textarea
+                    id="Details"
+                    name="Details"
+                    class="news-textarea"
+                    placeholder="Enter company news or announcement..."
+                    required>{{ d.Details }}</textarea>
+
+                <div class="editor-hint">
+                    <i class="bi bi-info-circle"></i>
+                    Make sure the announcement contains all important information.
+                </div>
+
+            </div>
+
+
+            <div class="update-divider"></div>
+
+
+            <div class="update-actions">
+
+                <a href="/news/" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="save-btn">
+                    <i class="bi bi-check2"></i>
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- Sidebar -->
+
+    <aside class="update-sidebar">
+
+        <div class="sidebar-heading">
+            <span>NEWS EDITOR</span>
+            <h3>Keep it current.</h3>
+        </div>
+
+
+        <div class="guide-item">
+
+            <span class="guide-number">01</span>
+
+            <div>
+                <strong>Review the content</strong>
+                <p>
+                    Check the announcement before saving your changes.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <span class="guide-number">02</span>
+
+            <div>
+                <strong>Keep it concise</strong>
+                <p>
+                    Use clear and direct information employees can quickly understand.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <span class="guide-number">03</span>
+
+            <div>
+                <strong>Save your changes</strong>
+                <p>
+                    Your updated announcement will replace the previous version.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="update-note">
+
+            <i class="bi bi-pencil"></i>
+
+            <div>
+                <strong>Editing Mode</strong>
+                <span>
+                    You are modifying an existing company announcement.
+                </span>
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+</section>
+
+
+
+
+{% endblock %}

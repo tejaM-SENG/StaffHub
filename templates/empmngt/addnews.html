@@ -1,0 +1,176 @@
+{% extends "empmngt/navbar.html" %}
+
+{% block nav_block %}
+
+<section class="news-form-page">
+
+<!-- Header -->
+
+<div class="news-header">
+
+    <div>
+        <span class="news-eyebrow">COMPANY COMMUNICATION</span>
+
+        <h1>Create Announcement</h1>
+
+        <p>
+            Publish important company news and announcements for your employees.
+        </p>
+    </div>
+
+    <a href="/news" class="back-link">
+        <i class="bi bi-arrow-left"></i>
+        News & Updates
+    </a>
+
+</div>
+
+
+<!-- Main Layout -->
+
+<div class="news-layout">
+
+    <!-- Form -->
+
+    <div class="news-form-card m-4">
+
+        <div class="news-card-header">
+
+            <div>
+                <span>NEW ANNOUNCEMENT</span>
+                <h2>News Details</h2>
+            </div>
+
+            <div class="news-icon">
+                <i class="bi bi-megaphone"></i>
+            </div>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="news-fields">
+
+                {% for i in form %}
+
+                <div class="news-field">
+
+                    <label for="{{ i.id_for_label }}">
+                        {{ i.label }}
+                    </label>
+
+                    {{ i }}
+
+                    {% if i.help_text %}
+                        <small>{{ i.help_text }}</small>
+                    {% endif %}
+
+                    {% if i.errors %}
+                        <div class="field-error">
+                            {{ i.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="news-actions">
+
+                <a href="/hrmanager" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="publish-btn">
+                    <i class="bi bi-send"></i>
+                    Publish News
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- Side Information -->
+
+    <aside class="news-sidebar">
+
+        <div class="sidebar-heading">
+            <span>EDITORIAL GUIDE</span>
+            <h3>Make it clear.</h3>
+        </div>
+
+
+        <div class="guide-item">
+
+            <span class="guide-number">01</span>
+
+            <div>
+                <strong>Use a clear title</strong>
+                <p>
+                    Keep the announcement heading short and easy to understand.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <span class="guide-number">02</span>
+
+            <div>
+                <strong>Share useful information</strong>
+                <p>
+                    Include the important details employees need to know.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <span class="guide-number">03</span>
+
+            <div>
+                <strong>Keep employees informed</strong>
+                <p>
+                    Use company news to communicate important updates and events.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="announcement-note">
+
+            <div class="note-icon">
+                <i class="bi bi-broadcast"></i>
+            </div>
+
+            <div>
+                <strong>Company Updates</strong>
+                <span>
+                    Published announcements can be displayed in the employee news section.
+                </span>
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+</section>
+
+
+
+{% endblock %}

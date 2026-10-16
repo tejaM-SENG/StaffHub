@@ -1,0 +1,247 @@
+{% extends "empmngt/navbar.html" %}
+{% block nav_block %}
+
+<!-- Header -->
+
+<div class="job-update-header">
+    <div>
+        <span class="job-update-eyebrow">CAREER MANAGEMENT</span>
+        <h1>Update Job Opening</h1>
+        <p>Edit the existing position and keep the career opportunity information accurate.</p>
+    </div>
+
+
+<a href="/jobs/" class="back-link">
+    <i class="bi bi-arrow-left"></i>
+    View Jobs
+</a>
+
+
+</div>
+
+<!-- Main Content -->
+
+<div class="job-update-layout">
+
+
+<!-- Editor -->
+<div class="job-update-card">
+
+    <div class="job-update-card-header">
+
+        <div>
+            <span>EDIT POSITION</span>
+            <h2>Job Details</h2>
+        </div>
+
+        <div class="job-update-icon">
+            <i class="bi bi-pencil-square"></i>
+        </div>
+
+    </div>
+
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="job-update-fields">
+
+            <!-- Role -->
+            <div class="job-field">
+
+                <label for="Role">
+                    Role
+                </label>
+
+                <input
+                    type="text"
+                    id="Role"
+                    name="Role"
+                    value="{{ d.Role }}"
+                    class="job-input"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Experience -->
+            <div class="job-field">
+
+                <label for="Experience">
+                    Experience
+                </label>
+                <div class="input-suffix-group">
+                <input
+                    type="number"
+                    id="Experience"
+                    name="Experience"
+                    value="{{ d.Experience }}" min='0' step='0.5'
+                    class="job-input"
+                    required
+                ><span class="input-suffix">Years</span>
+                </div>
+            </div>
+
+
+            <!-- Skills -->
+            <div class="job-field job-field-full">
+
+                <label for="Skills">
+                    Skills
+                </label>
+
+                <textarea
+                    id="Skills"
+                    name="Skills"
+                    class="job-input job-textarea"
+                    placeholder="Enter required skills..."
+                    required
+                >{{ d.Skills }}</textarea>
+
+            </div>
+
+
+            <!-- Current CTC -->
+            <div class="job-field">
+
+                <label for="CTC">
+                    Current CTC
+                </label>
+                <div class="input-suffix-group">
+                <input
+                    type="number"
+                    id="CTC"
+                    name="CTC"
+                    value="{{ d.CTC }}" min='0' step='0.1'
+                    class="job-input"
+                    required
+                ><span class="input-suffix">LPA</span>
+            </div>
+            </div>
+
+
+            <!-- Notice Period -->
+            <div class="job-field">
+
+                <label for="Notice_Period">
+                    Notice Period
+                </label>
+                <div class="input-suffix-group">
+                <input
+                    type="number"
+                    id="Notice_Period"
+                    name="Notice_Period"
+                    value="{{ d.Notice_Period }}" min='0' step='1'
+                    class="job-input"
+                    required
+                ><span class="input-suffix">Months</span>
+            </div>
+            </div>
+                                
+        </div>
+
+
+        <div class="job-update-divider"></div>
+
+
+        <div class="job-update-actions">
+
+            <a href="/jobs/" class="job-cancel-btn">
+                Cancel
+            </a>
+
+            <button type="submit" class="save-btn">
+                <i class="bi bi-check2"></i>
+                Save Changes
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- Sidebar -->
+<aside class="job-update-sidebar">
+
+    <div class="job-sidebar-heading">
+
+        <span>JOB EDITOR</span>
+
+        <h3>Keep it current.</h3>
+
+    </div>
+
+
+    <div class="job-guide-item">
+
+        <span class="job-guide-number">01</span>
+
+        <div>
+            <strong>Review the position</strong>
+
+            <p>
+                Check the role and existing requirements before editing the opening.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="job-guide-item">
+
+        <span class="job-guide-number">02</span>
+
+        <div>
+            <strong>Update requirements</strong>
+
+            <p>
+                Keep experience, skills, CTC and notice period information accurate.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="job-guide-item">
+
+        <span class="job-guide-number">03</span>
+
+        <div>
+            <strong>Save your changes</strong>
+
+            <p>
+                The updated information will replace the previous job opening details.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="job-update-note">
+
+        <i class="bi bi-pencil"></i>
+
+        <div>
+
+            <strong>Editing Mode</strong>
+
+            <span>
+                You are modifying an existing career opportunity.
+            </span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+</div>
+
+
+
+{% endblock %}

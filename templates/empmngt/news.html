@@ -1,0 +1,143 @@
+{% extends "empmngt/navbar.html" %}
+{% load static %}
+
+{% block nav_block %}
+
+<section class="news-detail-page">
+
+<!-- Header -->
+
+<div class="news-detail-header">
+
+    <div>
+        <span class="news-eyebrow">COMPANY COMMUNICATION</span>
+
+        <h1>Latest News</h1>
+
+        <p>
+            Stay updated with the latest announcements and important information.
+        </p>
+    </div>
+
+    {%if user.is_staff%}
+        <a href="/hrmanager" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            HR Portal
+        </a>
+        {%else%}
+        <a href="/empdash" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Employee Portal
+        </a>
+        {%endif%}
+
+</div>
+
+
+<!-- News Article -->
+
+<article class="news-article">
+
+    <div class="article-top">
+
+        <div class="article-icon">
+            <i class="bi bi-megaphone"></i>
+        </div>
+
+        <div>
+            <span class="article-label">LATEST ANNOUNCEMENT</span>
+
+            <div class="article-meta">
+                {% if d.is_edited %}
+                    <span>
+                        <i class="bi bi-pencil"></i>
+                        Updated {{ d.updated_at|date:"M d, Y" }}
+                    </span>
+                {% else %}
+                    <span>
+                        <i class="bi bi-calendar3"></i>
+                        Published {{ d.created_at|date:"M d, Y" }}
+                    </span>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="article-content">
+
+        <span class="article-small-title">COMPANY NEWS</span>
+
+        <h2>Latest Update</h2>
+
+        <div class="article-line"></div>
+
+        {%if d %}
+        <div class="article-details">
+            {{ d.Details }}
+        </div>
+
+        {%else%}
+        <div class="news-empty">
+
+            <i class="bi bi-journal-x"></i>
+
+            <strong>No Latest News available</strong>
+
+            <span>
+                There is no updated news available to display.
+            </span>
+
+        </div>       
+        {%endif%}
+
+    </div>
+
+    <!-- Actions -->
+    {%if user.is_staff%}
+    <div class="article-actions">
+
+        <a href="/newsupdate/{{ d.id }}/" class="modify-btn">
+            <i class="bi bi-pencil"></i>
+            Modify News
+        </a>
+
+        <a href="/newsdelete/{{ d.id }}/" class="delete-btn" onclick="return confirm('Are you sure to Delete this News?');">
+            <i class="bi bi-trash3"></i>
+            Delete News
+        </a>
+
+    </div>
+    {%endif%}
+</article>
+
+
+<!-- Footer Note -->
+
+<div class="news-page-footer">
+
+    <div>
+        <i class="bi bi-info-circle"></i>
+        <span>
+            Company announcements are managed by the HR team.
+        </span>
+    </div>
+    {%if user.is_staff%}
+    <a href="/hrmanager">
+        Back to HR Dashboard
+        <i class="bi bi-arrow-up-right"></i>
+    </a>
+    {%endif%}
+</div>
+
+
+</section>
+
+
+{% endblock %}
+
+
+
+

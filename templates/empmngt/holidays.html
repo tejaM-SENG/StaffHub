@@ -1,0 +1,167 @@
+{% extends "empmngt/navbar.html" %}
+{% load static %}
+
+{% block nav_block %}
+
+
+
+
+<section class="holiday-page">
+
+    <!-- Header -->
+
+    <div class="holiday-header">
+
+        <div>
+
+
+            <span class="holiday-eyebrow">
+                COMPANY SCHEDULE
+            </span>
+
+            <h1>Holidays Calendar</h1>
+
+            <p>
+                View company holidays and important occasions
+                throughout the year.
+            </p>
+
+        </div>
+
+        {%if user.is_staff%}
+        <a href="/calender" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Add Calendar
+        </a>
+        {%else%}
+        <a href="/empdash" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Employee Portal
+        </a>
+        {%endif%}
+    </div>
+
+    <!-- Holiday Table -->
+
+    <div class="holiday-table-wrapper">
+
+        <div class="holiday-table-header">
+            
+            <div class='d-flex gap-3'>
+                <div class='article-icon'>
+                    <i class='bi bi-gift-fill'></i>
+                </div>
+
+                <div>
+                    <span>ANNUAL SCHEDULE</span>
+                    <h2>Company Holidays</h2>
+                </div>
+            </div>
+
+            <div class="holiday-count">
+                {{ d|length }} Holidays
+            </div>
+
+        </div>
+
+
+        <table class="holiday-table">
+
+            <thead>
+
+                <tr>
+                    <th>Date</th>
+                    <th>Occasion</th>
+                    {%if user.is_staff%}
+                    <th class='text-center'>Actions</th>
+                    {%endif%}
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for i in d %}
+
+                <tr>
+
+                    <td>
+                        <span class="holiday-date">
+                            <i class="bi bi-calendar-event"></i>
+                            {{ i.Date }}
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="holiday-occasion">
+                            {{ i.Occasion }}
+                        </span>
+                    </td>
+                    
+                    {%if user.is_staff%}
+                    <td class='text-center'>
+                        <a href='/holidayupdate/{{i.id}}'>
+                            <button class='btn btn-warning'>
+                                <i class='bi bi-pencil'></i>
+                            </button>
+                        </a>
+                        <a href='/deleteholiday/{{i.id}}' onclick="return confirm('Are you sure to Delete this Holiday?');">
+                            <button class='btn btn-danger'>
+                                <i class='bi bi-trash'></i>
+                            </button>
+                        </a>
+                    </td>
+                    {%endif%}
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="2">
+
+                        <div class="holiday-empty">
+
+                            <i class="bi bi-calendar-x"></i>
+
+                            <strong>No holidays available</strong>
+
+                            <span>
+                                There are currently no holiday entries to display.
+                            </span>
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- Actions -->
+
+    <div class="holiday-actions">
+
+        <div class="calendar-note">
+            <i class="bi bi-info-circle"></i>
+            Company holidays and occasions are maintained by HR.
+        </div>
+
+        <a href="/news" class="news-btn">
+            <i class="bi bi-megaphone"></i>
+            Latest News
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
+

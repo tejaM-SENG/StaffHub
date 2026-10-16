@@ -1,0 +1,47 @@
+{% extends "empmngt/navbar.html" %}
+{% load static %}
+
+{% block nav_block %}
+
+
+<section class="error-page">
+    <div class="error-content">
+
+        <div class="error-label">
+            <i class="bi bi-exclamation-circle"></i>
+            Page Not Found
+        </div>
+
+        <h1 class="error-number">404</h1>
+
+        <h2 class="error-title">Uh-oh! Lost your way?</h2>
+
+        <p class="error-description">
+            We couldn't find the page you're looking for.
+            It may have been moved, removed, or the link might be incorrect.
+            Don't worry — let's get you back on track.
+        </p>
+
+        <div class="error-actions">
+            <a href="/home/" class="error-btn error-btn-home">
+                <i class="bi bi-house-door-fill"></i>
+                Go Back Home
+            </a>
+
+            <button type="button"
+                    class="error-btn error-btn-back"
+                    onclick="history.back()">
+                <i class="bi bi-arrow-left"></i>
+                Go Back
+            </button>
+        </div>
+
+        <div class="error-footer">
+            <i class="bi bi-shield-check me-1"></i>
+            Employee Management System
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

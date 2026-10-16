@@ -1,0 +1,310 @@
+{% extends 'empmngt/navbar.html' %}
+
+{% block nav_block %}
+
+<section class="hr-page">
+
+    <div class="container">
+
+        <!-- ==============================================
+             PAGE HEADER
+        =============================================== -->
+
+        <div class="hr-page-header">
+
+            <div>
+                <span class="hr-overline">
+                    HR MANAGEMENT
+                </span>
+
+                <h1>
+                    Good morning, HR Manager.
+                </h1>
+
+                <p>
+                    Manage your workforce and keep employee
+                    information organized from one place.
+                </p>
+            </div>
+            
+        </div>
+
+
+        <!-- ==============================================
+             MAIN ACTION
+        =============================================== -->
+
+        <div class="hr-primary">
+
+            <div class="hr-primary-content">
+
+                <span>
+                    EMPLOYEE MANAGEMENT
+                </span>
+
+                <h2>
+                    Keep your workforce
+                    <strong>organized.</strong>
+                </h2>
+
+                <p>
+                    Create new employee records, review existing
+                    information and manage workforce data through
+                    the HR management system.
+                </p>
+
+                <a href="/viewemp" class="hr-primary-button">
+                    View Employee Data
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="hr-primary-visual">
+
+                <div class="visual-grid"></div>
+
+                <div class="visual-person">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+
+                <div class="visual-label">
+                    <small>WORKFORCE</small>
+                    <strong>Employee Records</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================================
+             QUICK ACTIONS
+        =============================================== -->
+
+        <div class="hr-section-heading m-5">
+
+            <div>
+                <span class="hr-overline">
+                    QUICK ACTIONS
+                </span>
+
+                <h2>
+                    Manage your organization
+                </h2>
+            </div>
+
+            <p>
+                Access the tools you need for everyday
+                HR administration.
+            </p>
+
+        </div>
+
+
+        <div class="hr-actions m-5">
+
+            <!-- ADD EMPLOYEE -->
+
+            <a href="/addemp" class="hr-action">
+
+                <div class="hr-action-number">
+                    01
+                </div>
+
+                <div class="hr-action-icon">
+                    <i class="bi bi-person-plus"></i>
+                </div>
+
+                <div class="hr-action-content">
+
+                    <h3>
+                        Add Employee
+                    </h3>
+
+                    <p>
+                        Create and register a new employee
+                        in the system.
+                    </p>
+
+                </div>
+
+                <div class="hr-action-link">
+                    <span>Open</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+
+            <!-- EMPLOYEE DATA -->
+
+            <a href="/viewemp" class="hr-action">
+
+                <div class="hr-action-number">
+                    02
+                </div>
+
+                <div class="hr-action-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+
+                <div class="hr-action-content">
+
+                    <h3>
+                        Employee Data
+                    </h3>
+
+                    <p>
+                        View, update and manage employee
+                        information.
+                    </p>
+
+                </div>
+
+                <div class="hr-action-link">
+                    <span>Open</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+
+            <!-- COMPANY NEWS -->
+
+            <a href="/addnews" class="hr-action">
+
+                <div class="hr-action-number">
+                    03
+                </div>
+
+                <div class="hr-action-icon">
+                    <i class="bi bi-megaphone"></i>
+                </div>
+
+                <div class="hr-action-content">
+
+                    <h3>
+                        Company News
+                    </h3>
+
+                    <p>
+                        Create and manage company
+                        announcements.
+                    </p>
+
+                </div>
+
+                <div class="hr-action-link">
+                    <span>Open</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+
+            <!-- YEAR CALENDAR -->
+
+            <a href="/calender" class="hr-action">
+
+                <div class="hr-action-number">
+                    04
+                </div>
+
+                <div class="hr-action-icon">
+                    <i class="bi bi-calendar3"></i>
+                </div>
+
+                <div class="hr-action-content">
+
+                    <h3>
+                        Year Calendar
+                    </h3>
+
+                    <p>
+                        Manage company holidays and
+                        important dates.
+                    </p>
+
+                </div>
+
+                <div class="hr-action-link">
+                    <span>Open</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+
+            <!-- JOB OPENINGS -->
+
+            <a href="/jobopen" class="hr-action">
+
+                <div class="hr-action-number">
+                    05
+                </div>
+
+                <div class="hr-action-icon">
+                    <i class="bi bi-briefcase"></i>
+                </div>
+
+                <div class="hr-action-content">
+
+                    <h3>
+                        Job Openings
+                    </h3>
+
+                    <p>
+                        Manage current job opportunities
+                        and vacancies.
+                    </p>
+
+                </div>
+
+                <div class="hr-action-link">
+                    <span>Open</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+
+        <!-- ==============================================
+             BOTTOM INFORMATION
+        =============================================== -->
+
+        <div class="hr-bottom mx-5">
+
+            <div class="hr-bottom-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+
+            <div>
+                <strong>
+                    HR Administration
+                </strong>
+
+                <p>
+                    You are accessing the administrative
+                    management area of StaffHub.
+                </p>
+            </div>
+
+            <span class="hr-secure">
+                <i class="bi bi-circle-fill"></i>
+                Secure Area
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,6 @@
+whitenoise
+Django
+djangorestframework
+pillow
+validators
+requests

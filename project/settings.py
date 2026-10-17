@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-n7&dijwt6o+yu4_cejbt*)2i6-+kr9)%nc!27j*_$#-%*!l=55
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'staffhub-95wo.onrender.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,7 +128,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [STATIC_DIR]
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

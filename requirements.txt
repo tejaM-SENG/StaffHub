@@ -4,3 +4,4 @@ djangorestframework
 pillow
 validators
 requests
+gunicorn

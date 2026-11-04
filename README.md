@@ -159,14 +159,12 @@ http://127.0.0.1:8000/
 
 Screenshots demonstrating the application's interface and functionality will be added here.
 
-| Dashboard | Employee Management |
+| Interface | Screenshots |
 |---|---|
-| <img width="2844" height="1270" alt="image" src="https://github.com/user-attachments/assets/c08b06c8-87c9-4dc5-b2ec-13195c87478f" /><img width="2842" height="1284" alt="image" src="https://github.com/user-attachments/assets/e0cfc42f-104c-444b-b61b-7d35246876f6" /><img width="2838" height="1268" alt="image" src="https://github.com/user-attachments/assets/6874b65e-e332-44c5-8624-95ef41486229" />  |  <img width="2816" height="1232" alt="image" src="https://github.com/user-attachments/assets/889d4e5e-f9db-4a57-9e88-24562f3fb46a" /><img width="2850" height="1096" alt="image" src="https://github.com/user-attachments/assets/b60cbd33-3ca0-456a-ad41-b282a95cd794" /><img width="2780" height="1090" alt="image" src="https://github.com/user-attachments/assets/9aae5017-ac69-49a5-b522-29af7ac686fc" /><img width="2844" height="1084" alt="image" src="https://github.com/user-attachments/assets/37c5b676-e1e1-4939-bae8-d435cb2bc455" />  |
-
-| Employee Profile | Company News |
-|---|---|
-| <img width="2834" height="1272" alt="image" src="https://github.com/user-attachments/assets/8df3a46f-8414-464d-ae2e-00c508f26e18" /><img width="2794" height="1274" alt="image" src="https://github.com/user-attachments/assets/fb808785-2d9c-4e8b-836e-a4507d34d6c0" /><img width="2800" height="1282" alt="image" src="https://github.com/user-attachments/assets/e69d5028-0939-4a05-9083-31372e45cc79" />  | <img width="2844" height="1282" alt="image" src="https://github.com/user-attachments/assets/fb34a3d6-374a-4933-bbff-ca42d14939d7" />
- |
+| Dashboard | <img width="2844" height="1270" alt="image" src="https://github.com/user-attachments/assets/c08b06c8-87c9-4dc5-b2ec-13195c87478f" /><img width="2842" height="1284" alt="image" src="https://github.com/user-attachments/assets/e0cfc42f-104c-444b-b61b-7d35246876f6" /><img width="2838" height="1268" alt="image" src="https://github.com/user-attachments/assets/6874b65e-e332-44c5-8624-95ef41486229" />  |
+| Employee Management |  <img width="2816" height="1232" alt="image" src="https://github.com/user-attachments/assets/889d4e5e-f9db-4a57-9e88-24562f3fb46a" /><img width="2850" height="1096" alt="image" src="https://github.com/user-attachments/assets/b60cbd33-3ca0-456a-ad41-b282a95cd794" /><img width="2780" height="1090" alt="image" src="https://github.com/user-attachments/assets/9aae5017-ac69-49a5-b522-29af7ac686fc" /><img width="2844" height="1084" alt="image" src="https://github.com/user-attachments/assets/37c5b676-e1e1-4939-bae8-d435cb2bc455" />  |
+| Employee Profile | <img width="2834" height="1272" alt="image" src="https://github.com/user-attachments/assets/8df3a46f-8414-464d-ae2e-00c508f26e18" /><img width="2794" height="1274" alt="image" src="https://github.com/user-attachments/assets/fb808785-2d9c-4e8b-836e-a4507d34d6c0" /><img width="2800" height="1282" alt="image" src="https://github.com/user-attachments/assets/e69d5028-0939-4a05-9083-31372e45cc79" />  |
+| Company News | <img width="2844" height="1282" alt="image" src="https://github.com/user-attachments/assets/fb34a3d6-374a-4933-bbff-ca42d14939d7" /> |
 
 ## ☁️ Deployment
 

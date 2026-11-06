@@ -2741,7 +2741,7 @@ a {
 }
 
 .employee-table td {
-    padding: 17px 18px;
+    padding: 12px;
     border-bottom: 1px solid #edf0f3;
     vertical-align: middle;
     white-space: nowrap;
@@ -2810,6 +2810,7 @@ a {
 
 .joining-date {
     color: #697382;
+    font-size: 12px;
 }
 
 .department {
@@ -2827,6 +2828,9 @@ a {
 }
 
 
+.actionbutton{
+    font-size:10px;
+}
 
 /* EMPTY STATE */
 

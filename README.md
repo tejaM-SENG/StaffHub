@@ -46,7 +46,7 @@ Use the following accounts to explore the live application.
 
 | Username | Password |
 |---|---|
-| demo@admin | demo@1234 |
+| demo@hr | demo@1234 |
 
 
 ## 📂 Project Structure
